@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://oceanmiki.github.io/"/>
-  <updated>2021-05-07T13:23:15.439Z</updated>
+  <updated>2021-05-27T08:56:12.849Z</updated>
   <id>http://oceanmiki.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>只使用鼠标怎么关机？</title>
+    <link href="http://oceanmiki.github.io/2021/05/27/%E5%8F%AA%E4%BD%BF%E7%94%A8%E9%BC%A0%E6%A0%87%E5%85%B3%E6%9C%BA/"/>
+    <id>http://oceanmiki.github.io/2021/05/27/%E5%8F%AA%E4%BD%BF%E7%94%A8%E9%BC%A0%E6%A0%87%E5%85%B3%E6%9C%BA/</id>
+    <published>2021-05-27T08:45:53.197Z</published>
+    <updated>2021-05-27T08:56:12.849Z</updated>
+    
+    <content type="html"><![CDATA[<p>​    不知道有什么用的方法。</p><a id="more"></a><h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ol><li>一台主机（只适用于windows系统）</li><li>一个显示器</li><li>电源线、HDMI线等</li><li>一个鼠标（有线无线均可）</li></ol><h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol><li>打开我的电脑</li><li>找到C盘</li><li>依次进入C:\Windows\System32</li><li>在这个文件夹下不断往下拉，找到SlideToShutDown.exe</li><li>双击</li><li>出现一个半拉页面（通常是你的锁屏界面图片），把它拖到底</li><li>关机成功！</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;​    不知道有什么用的方法。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="日常工具使用" scheme="http://OceanMiki.github.io/categories/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="奇淫技巧" scheme="http://OceanMiki.github.io/tags/%E5%A5%87%E6%B7%AB%E6%8A%80%E5%B7%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>在虚拟现实中社交</title>
