@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://oceanmiki.github.io/"/>
-  <updated>2021-05-27T08:56:12.849Z</updated>
+  <updated>2021-06-18T08:33:58.953Z</updated>
   <id>http://oceanmiki.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>暑期实习面经汇总</title>
+    <link href="http://oceanmiki.github.io/2021/06/12/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F%E6%B1%87%E6%80%BB/"/>
+    <id>http://oceanmiki.github.io/2021/06/12/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F%E6%B1%87%E6%80%BB/</id>
+    <published>2021-06-12T14:26:56.379Z</published>
+    <updated>2021-06-18T08:33:58.953Z</updated>
+    
+    <content type="html"><![CDATA[<p>记录一下咸鱼的找实习经历</p><a id="more"></a><h1 id="美团（一面挂）"><a href="#美团（一面挂）" class="headerlink" title="美团（一面挂）"></a>美团（一面挂）</h1><ul><li>笔试5道a了两道，第三道80%case，5.12一面</li></ul><h4 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h4><ol><li>post与get的区别？</li><li>http和https的区别？</li><li>http的三次握手？</li><li>cookie和session的区别？它们会过期吗？如果故意修改cookie有什么影响？怎么防止这种问题的出现？</li></ol><h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><ol><li>除了课程设计你有用过数据库里面的索引吗？</li><li>为什么要用索引？索引是怎么提升查询效率的？</li><li>hash索引和b+树索引的区别？</li><li>b数和b+树的区别？b+树为什么就比b树存储的信息多？</li></ol><h4 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h4><ol><li><p>产生死锁的必要条件？</p></li><li><p>解决死锁的方法？</p></li></ol><h4 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h4><ol><li><p>了解hashmap吗？hashmap为什么初始化长度是2的幂次方？</p></li><li><p>hashmap和concurrenthashmap的区别？为什么说hashmap是线程不安全的？concurrenthashmap是怎么解决线程不安全的？</p></li><li><p>synchronize属性和synchronize方法有什么区别？</p></li></ol><h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><ol><li><p>求一个大数据集里面前k个最大的数？</p></li><li><p>求一个大数据集里面前k个出现次数最多的数？</p></li></ol><h1 id="最右视频（一面挂）"><a href="#最右视频（一面挂）" class="headerlink" title="最右视频（一面挂）"></a>最右视频（一面挂）</h1><h4 id="扯淡"><a href="#扯淡" class="headerlink" title="扯淡"></a>扯淡</h4><ol><li><p>先自我介绍一下吧。</p></li><li><p>你第一个项目是深度学习的，我对这方面是个外行，你怎么向我介绍这个东西？</p></li><li><p>你第二个项目是前端开发，能说说都用到什么技术吗？说了HTML网页+echarts图表，用JavaScript写的，数据是自己模拟的（因为甲方没给数据。面试官说就是都是死数据咯。我又补充如果有数据我们也可以使用mybatis传？面试官眼前一亮，你现在是使用了mybatis了？（回答还没。。。尬住了</p></li><li><p>你这两个项目都不是完全是测试的，那你说你熟悉测试理论，能说说都知道什么理论吗？（随便答了两句黑盒白盒，等价类划分，正等着面试官深入问，结果直接说可以了，下一题？内心os：等等，我还没描述黑白盒测试的区别，还没介绍单元测试、集成测试、系统测试、回归测试</p></li><li><p>我给你一个场景，有一份工作量是5天的任务，老板要你2天做完，你怎么办？</p></li><li><p>遇到技术难点怎么办？</p></li><li><p>老板给你指定一个同学（同事，笑），你去向他请教，你会怎么请教？</p></li><li><p>你觉得你的社交能力怎样？实习有一个团队一起协作，你作为一个新人怎么融入？</p></li><li><p>你觉得你的抗压能力怎样？</p></li><li><p>你的职业规划是什么？</p></li><li><p>你都面试了哪些公司？（说算上这次是第二次）就继续问说说你上一家，我说是美团，又继续问面的是测试还是开发，我说也是测试开发。最后问了一嘴美团都面了什么内容。（其实是我自己脑补，自顾自答得。。。</p></li><li><p>你觉得测试是干嘛的？为什么选择测试？你有投过开发吗？为什么不选开发？</p></li><li><p>大概什么时候到岗？能工作多长时间？</p></li></ol><h4 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h4><ol><li>更加熟悉哪门语言？java还是python？（答java，感觉面试官顿了一下，沉吟一声就开始了</li><li>接口和抽象方法的区别？</li><li>ArrayList和LinkedList的区别？</li><li>用过什么linux命令</li><li>说一下原子性？</li><li>数据库事务的四大特性？（刚刚说的原子性算一个、半天憋出一个隔离性，实在不好意思，面试官还安慰我说基础概念确实，没关系。</li><li>java八大基础类型，（平时匆匆扫一眼的恶果，漏了short、long、byte，看我说到Boolean像是忘了，面试官直接说可以了（哈哈哈~嗝</li></ol><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol><li>语言组织得不太好，磕磕绊绊，还是面得少了。</li><li>思路前后逻辑最好能够统一，不要紧张，冷静梳理1、2、3点再好好回答。</li><li>争取一次性把自己想说的都说完，这次面试官没怎么深入问，估计是觉得我只能答上那些，很多问题还没来得及展开就被说“可以了”，ε=(´ο｀*)))唉，下次一定学着引导展开，不然不是白白准备了吗。。</li><li>以为一面会有很多技术的问题，但可能觉得我项目经历太过简单，也没什么好问的。问了一大堆我没想过的那种问题</li><li>感觉是刷KPI的？</li></ol><h1 id="纷享销客一面"><a href="#纷享销客一面" class="headerlink" title="纷享销客一面"></a>纷享销客一面</h1><ol><li>先自我介绍一下</li><li>没问项目</li><li>你说你选修了软件测试这门课程，输出了相关的文档，那么你都用到哪些测试方法呢？</li><li>更倾向做简单的黑盒测试还是喜欢有技术挑战一点的工作？</li><li>git熟悉吗？怎么用的？</li><li>linux都用到了哪些命令？</li><li>对于日志文件有没有筛选？怎么筛选的？</li><li>对于单元测试，除了Junit还用过别的框架吗？（面试官说工作用的tensor什么的，大同小异</li><li>java和python哪个更熟悉？</li></ol><h4 id="部门情况"><a href="#部门情况" class="headerlink" title="部门情况"></a>部门情况</h4><ol><li>不只是测试，不是简单的点点点，也有开发，要写代码</li><li>工作性质：可以选择到业务部门了解，也可以直接来就上手干，跟我干</li><li>偏底层，关于接口测试，（我：集成测试？他：可以这么理解</li><li>微服务开发的内容</li></ol><h4 id="反问"><a href="#反问" class="headerlink" title="反问"></a>反问</h4><ol><li>您对我这次面试怎么评价？（虽然没深入问技术，但挺好的，基础好，值得培养</li><li>大概多久能接到面试结果通知？（结果其实已经回答我了，很快会电话通知我二面，是主管面</li><li>为了应对接下来的面试和实习，我该怎么准备？（简历写的东西加强一下，sql语句必考连表查询之类的多准备一下，算法题刷题就完事了，代码能力加强一些，可以自己做一些微服务的东西。</li></ol><h1 id="纷享销客二面（offer）"><a href="#纷享销客二面（offer）" class="headerlink" title="纷享销客二面（offer）"></a>纷享销客二面（offer）</h1><h4 id="QA面试官估计是忘了我，等了10min打了个电话，然后全程用手机视频面"><a href="#QA面试官估计是忘了我，等了10min打了个电话，然后全程用手机视频面" class="headerlink" title="QA面试官估计是忘了我，等了10min打了个电话，然后全程用手机视频面"></a>QA面试官估计是忘了我，等了10min打了个电话，然后全程用手机视频面</h4><ol><li>自我介绍？</li><li>对测试了解？</li><li>更愿意做白盒还是黑盒？</li><li>接口测试做过吗？（postman测过百度翻译接口，当时是面完一面之后百度了接口测试，跟着博客试了一下</li><li>针对你的百度翻译接口测试，设计测试用例？</li><li>你都是站在用户角度设计的，有考虑过开发人员的测试用例吗？</li><li>有什么想问的？</li></ol><h1 id="百度一面，50min"><a href="#百度一面，50min" class="headerlink" title="百度一面，50min"></a>百度一面，50min</h1><ol><li>自我介绍</li><li>问项目，没什么好问的，尬聊</li><li>linux命令介绍一下</li><li>linux查找cpu占用前五的进程？</li><li>把文本内容aa全部替换成bbb</li><li>数据库：查找平均分大于60的学生及其成绩，查找倒数第三个入职的员工信息</li><li>从点击一个网页到显示的全过程？</li><li>get和post的区别？</li><li>cookie和session的区别？</li><li>查找两个链表第一个相同结点？</li><li>判断链表是否有环？</li><li>测试的理解？</li><li>听说过测试金字塔吗？</li><li>有什么想问的？</li></ol><h1 id="百度二面，50min"><a href="#百度二面，50min" class="headerlink" title="百度二面，50min"></a>百度二面，50min</h1><ul><li>6.11（周五）下午2点面的，接下来的周六、日、一是端午节</li></ul><ol><li>自我介绍</li><li>共享屏幕，直接写代码：一个文件里面有学生的信息：学号、姓名和年龄。你写java代码，对学生进行去重和排序处理，然后连接数据库，将每个学生的信息插入。（15min</li><li>写完了，讲一下，如果你对刚刚这个功能进行测试，你会怎么测？</li><li>tcp和udp区别？tcp具体怎么保证可靠性（又问了很多计算机网络的知识，感觉很喜欢问计网</li><li>linux查找日志中出现次数最多的10个ip地址？用到了哪些命令？（cat、sort、head、|…)</li><li>你今天下午还有课吗？（答没有，原来是面完10min后打电话约三面</li><li>有什么想问的？</li><li>我投的是测试开发吧？（因为发给我的二面链接写的后台开发，同时问的问题太过诡异</li><li>工程效能部是干什么的？</li><li>我能学到什么？</li></ol><h1 id="百度三面，40min"><a href="#百度三面，40min" class="headerlink" title="百度三面，40min"></a>百度三面，40min</h1><ol><li>自我介绍一下</li><li>二面面试官都问你什么了？</li><li>又问了一些，但是忘了</li><li>网络、操作系统都问的差不多了，我们做道题吧，查找最长无重复子串（写了快20 min，紧张</li><li>你有什么想问的？</li></ol><h1 id="百度四面，23min19s（offer）"><a href="#百度四面，23min19s（offer）" class="headerlink" title="百度四面，23min19s（offer）"></a>百度四面，23min19s（offer）</h1><ul><li>PS：前面三面都是视频面，我以为这次电话面应该是hr了吧，聊着聊着不对劲</li></ul><ol><li>同学你好，前面的面试官说你不错，你感觉怎么样？</li><li>还在北京上学是吗？大三？考研吗？</li><li>最快入职时间？能实习多久？（暑假一周5天没问题，面试官说大四开学后根据课程调整也是可以的，我说我下学期就一节课，不需要调整hhh</li><li>能保证6个月以上实习吗？（我说能，顺便探探口风，看能不能转正，说有很大机会，我也表示我也希望实习久点balabala</li><li>家里人知道实习，支持吗？学校支持吗？</li><li>建议我多学校老师沟通（这里不是很懂，是有传闻交大的老师不放人吗？我解释说老师很支持，暑期课程就有用实习抵学分的。</li><li>你学习过程中有遇到什么困难吗？怎么解决的？</li><li>和同学关系怎么样？（因为我上一个问题说问身边的dalao</li><li>然后话题陡然一转，你java怎么学的？</li><li>python怎么学的？掌握情况如何？</li><li>面试官介绍了一下部门的情况，说会比较多使用python</li><li>数据库平时有用吗？怎么用的？</li><li>了解主从同步吗？（？？？后面还有一些问题我忘了，我已经神志不清了</li><li>你有什么想了解的？</li><li>实习生在部门日常工作都干些什么？</li><li>百度里面培养体系如何？</li><li>面试结果？</li><li>这里他说他也是技术人员，主要是打电话了解情况，说具体入职时间、待遇等hr通知</li><li>最后面试官祝我端午节快乐（我说今天怎么连着面，原来是端午节等下班没事干2333</li><li>我说：端午节快乐！88</li><li>面完快下午5点，出去吃个饭，拿个快递，回宿舍后不久（7点多）收到hr电话</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;记录一下咸鱼的找实习经历&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="面试" scheme="http://OceanMiki.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+      <category term="算法" scheme="http://OceanMiki.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="数据库" scheme="http://OceanMiki.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="计网" scheme="http://OceanMiki.github.io/tags/%E8%AE%A1%E7%BD%91/"/>
+    
+      <category term="操作系统" scheme="http://OceanMiki.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>只使用鼠标怎么关机？</title>
