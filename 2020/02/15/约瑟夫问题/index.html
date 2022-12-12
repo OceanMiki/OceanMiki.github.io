@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="http://oceanmiki.github.io/2020/02/15/%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/">
+    
+    
+    <title>约瑟夫问题 | Ocean&#39;s Blog | 有朝一日刀在手，斩遍天下恩爱狗！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Java,环形链表">
+    <meta name="description" content="那一天，人类终于回想起了，曾经一度被猴子选大王支配的恐怖，还有不会链表的那份耻辱。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="约瑟夫问题">
+<meta property="og:url" content="http://oceanmiki.github.io/2020/02/15/%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Ocean&#39;s Blog">
+<meta property="og:description" content="那一天，人类终于回想起了，曾经一度被猴子选大王支配的恐怖，还有不会链表的那份耻辱。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-15T12:24:26.762Z">
+<meta property="article:modified_time" content="2020-02-15T12:24:26.763Z">
+<meta property="article:author" content="冷亚麻色的？">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="环形链表">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="Ocean&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">冷亚麻色的？</h5>
+          <a href="mailto:976626892@qq.com" title="976626892@qq.com" class="mail">976626892@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/OceanMiki" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/6572857199/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">约瑟夫问题</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">约瑟夫问题</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-02-15T12:24:26.762Z" itemprop="datePublished" class="page-time">
+  2020-02-15
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#问题描述"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题描述</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#代码实现"><span class="post-toc-number">2.</span> <span class="post-toc-text">代码实现</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#说明"><span class="post-toc-number">3.</span> <span class="post-toc-text">说明</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-约瑟夫问题"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">约瑟夫问题</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-02-15 20:24:26" datetime="2020-02-15T12:24:26.762Z"  itemprop="datePublished">2020-02-15</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>那一天，人类终于回想起了，曾经一度被猴子选大王支配的恐怖，还有不会链表的那份耻辱。</p>
+<a id="more"></a>
+
+<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>一群猴子要选新猴王。新猴王的选择方法是：让N只候选猴子围成一圈，从某位置起顺序编号为1~N号。从第k号开始报数，每轮从1报到m，凡报到m的猴子即退出圈子，接着又从紧邻的下一只猴子开始同样的报数。如此不断循环，最后剩下的一只猴子就选为猴王。请问是原来第几号猴子当选猴王？</p>
+<p>输入格式：<br>在一行中给三个正整数。N（≤1000）代表有N只猴子，k（1≤k≤N）代表从第k只猴子开始报数，m（1≤m≤1000）代表报m个数。</p>
+<p>输出格式：<br>在一行中输出当选猴王的编号。</p>
+<p>输入样例：<br>5 1 2</p>
+<p>输出样例：<br>3</p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><p>环形链表模拟</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">circleList</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Monkey first = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">public</span> Monkey cur = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> nums)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Input is invalid!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= nums ; i++) &#123;</span><br><span class="line">            Monkey monkey = <span class="keyword">new</span> Monkey(i);</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">1</span>)&#123;</span><br><span class="line">                first = monkey;</span><br><span class="line">                first.setNext(first);</span><br><span class="line">                cur = first;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                cur.setNext(monkey);</span><br><span class="line">                monkey.setNext(first);</span><br><span class="line">                cur = monkey;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (first == <span class="keyword">null</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">"No monkeys!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        Monkey cur = first;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            System.out.print(cur.getNo() + <span class="string">" "</span>);</span><br><span class="line">            <span class="keyword">if</span> (cur.getNext() == first) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            cur = cur.getNext();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectKing</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> m,<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        Monkey last = first;<span class="comment">//定义一个辅助指针找到并指向环形链表的最后一个节点</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//防止傻逼</span></span><br><span class="line">        <span class="keyword">if</span>(first == <span class="keyword">null</span> || k &lt;= <span class="number">0</span> || k &gt; n || m &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">            System.out.println(<span class="string">"Your input is illegal！"</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//首先让first移动k-1次找到开始报数的位置</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; k ;i++)&#123;</span><br><span class="line">            first = first.getNext();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//当last的next是first时说明此时的last就是环形链表的最后一个</span></span><br><span class="line">        <span class="keyword">while</span> (last.getNext() != first)&#123;</span><br><span class="line">            last = last.getNext();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">1</span>;<span class="comment">//记录出局猴子的顺序</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//如果last == first说明圈里面就剩下一只猴子了</span></span><br><span class="line">        <span class="keyword">while</span> (first != last)&#123;</span><br><span class="line">            <span class="comment">//报数，因为first本身也要报一个数，所以只要移动m-1次</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m ; i++)&#123;</span><br><span class="line">                first = first.getNext();</span><br><span class="line">                last = last.getNext();<span class="comment">//last也要跟着移动</span></span><br><span class="line">            &#125;</span><br><span class="line">            System.out.printf(<span class="string">"第%d个出局的猴子编号是%d"</span>,index,first.getNo());</span><br><span class="line">            index++;</span><br><span class="line">            System.out.println();</span><br><span class="line">            <span class="comment">//删除出局猴子的节点</span></span><br><span class="line">            first = first.getNext();</span><br><span class="line">            last.setNext(first);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.printf(<span class="string">"大王是%d"</span>,first.getNo());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Monkey</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> no;</span><br><span class="line">    <span class="keyword">private</span> Monkey next;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Monkey</span><span class="params">(<span class="keyword">int</span> no)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.no = no;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getNo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> no;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNo</span><span class="params">(<span class="keyword">int</span> no)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.no = no;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Monkey <span class="title">getNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNext</span><span class="params">(Monkey next)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.next = next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">johnphuTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n, k, m;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        circleList list = <span class="keyword">new</span> circleList();</span><br><span class="line">        System.out.println(<span class="string">"有多少个猴子？"</span>);</span><br><span class="line">        n = scanner.nextInt();</span><br><span class="line">        System.out.println(<span class="string">"从第几只猴子开始报数？"</span>);</span><br><span class="line">        k = scanner.nextInt();</span><br><span class="line">        System.out.println(<span class="string">"每次报几个数？"</span>);</span><br><span class="line">        m = scanner.nextInt();</span><br><span class="line">        list.init(n);</span><br><span class="line">        list.selectKing(k,m,n);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>定义猴子节点的时候把猴子的编号都声明为private，所以使用了getter和setter方法，代码阅读性略有下降，不过不是太影响。</p>
+<p>为了交互性，加入了一些文字提示。</p>
+<p>算法核心就是，定义两个指针，一个找到开始报数的猴子（first），一个找到环形链表最后的猴子（last）。当两个指针重合，说明就剩下一只猴子了。</p>
+<p>报m个数就是让两个指针一起向next移动m-1次，报完数时first的指向就是要淘汰的猴子。</p>
+<p>淘汰猴子时，就让first指向下一只猴子（也就是要淘汰的猴子的next），然后改变last的next，使last的next变成first。这样，要淘汰的猴子就没有指针指向，在Java里被垃圾回收了，相当于删除。</p>
+<p>最后剩下的猴子就是大王。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-02-15T12:24:26.763Z" itemprop="dateUpdated">2020-02-15 20:24:26</time>
+</span><br>
+
+
+        
+        <a href="/2020/02/15/%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/" target="_blank" rel="external">http://oceanmiki.github.io/2020/02/15/%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://OceanMiki.github.io">
+            <img src="/img/avatar.jpg" alt="冷亚麻色的？">
+            冷亚麻色的？
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" rel="tag">环形链表</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://oceanmiki.github.io/2020/02/15/%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/&title=《约瑟夫问题》 — Ocean's Blog&pic=http://OceanMiki.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://oceanmiki.github.io/2020/02/15/%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/&title=《约瑟夫问题》 — Ocean's Blog&source=那一天，人类终于回想起了，曾经一度被猴子选大王支配的恐怖，还有不会链表的那份耻辱。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://oceanmiki.github.io/2020/02/15/%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《约瑟夫问题》 — Ocean's Blog&url=http://oceanmiki.github.io/2020/02/15/%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/&via=http://OceanMiki.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://oceanmiki.github.io/2020/02/15/%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/02/16/%E6%97%8B%E8%BD%AC%E9%93%BE%E8%A1%A8/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">旋转链表</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/02/14/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%8F%8D%E8%BD%AC/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">单向链表的反转</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var id = location.pathname
+        if (location.pathname.length > 50) {
+          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
+        }
+        const gitalk = new Gitalk({
+          clientID: 'c52a2baefea4a51b005f',
+          clientSecret: 'e5040d78db75dd0dd2cce3dc7bc0fbfa67c2b9a4',
+          repo: 'OceanMiki.github.io',
+          owner: 'OceanMiki',
+          admin: ['OceanMiki'],
+          id: id,      // Ensure uniqueness and length less than 50
+          title: document.title.split('|')[0],
+          distractionFreeMode: false  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        点开了就扫一下！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/WeChat.jpg" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>冷亚麻色的？ &copy; 2020 - 2022</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://oceanmiki.github.io/2020/02/15/%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/&title=《约瑟夫问题》 — Ocean's Blog&pic=http://OceanMiki.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://oceanmiki.github.io/2020/02/15/%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/&title=《约瑟夫问题》 — Ocean's Blog&source=那一天，人类终于回想起了，曾经一度被猴子选大王支配的恐怖，还有不会链表的那份耻辱。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://oceanmiki.github.io/2020/02/15/%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《约瑟夫问题》 — Ocean's Blog&url=http://oceanmiki.github.io/2020/02/15/%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/&via=http://OceanMiki.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://oceanmiki.github.io/2020/02/15/%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACyElEQVR42u3awW7rMAwEwP7/T/cBPRXoi71LWmkP41NhJJFGBUSC5MdH/Hx+PT/ffH9//eb6k9fr5p8fPnh4eHijrb96fvJeLfa5eF4dZbKHmyPAw8PDO8a7DgbX4Pw2bi/95LhvLHh4eHi/ypst2V76m8PFw8PD+2u8JNXeXP2z48bDw8P7LV5SjJhd5W3BN0+pH6614OHh4cW8tgH2F/4+2N/Dw8PDW3TVZwlxMnCQFzs2rTU8PDy8E7xkE7PCwaaUkI8URDvBw8PDO8Zrh6KS9/uCRbvb/3wXDw8P71Fem/ImV3abLieVhDZo4eHh4Z3j5a2mpxLf9nf2wQkPDw/vWV57fedvWvx1qJjtBA8PD+8Ery2PtoNNyaafGpzCw8PDeyevHQLYp91JGTdP9KN/AB4eHt6jvHbgadaO2oSTPMAM4x4eHh5eyZuVBp5KvpOjbEsYRZUaDw8Pb8SbFVtnQ1ptcjwbLyjiDB4eHt4omU4a80lBYVYUzpPmGomHh4d3jNcWRttQkafjT82RRUNXeHh4eAverGz6bLqc/EIbovDw8PDO8dprN7mUZy2x9luroQE8PDy8Ee+p8NBe/fm6bYn5SPTDw8PD+/ab7aBAu8AsALSH8vI48PDw8A7w2qGrfOv5wNZTR4CHh4f3Hl4eGNpBqLZc2w5URceKh4eHd4y3r3m2l36+3fZ5ORmBh4eH9xBvU27YbzFZPRkXqBtgeHh4eAteXhLdlAaKS7wMRTdIPDw8vMO8WcJ6fdHP2mP5Yd0cPR4eHt4BXv4kuXlbnM0D0qygjIeHh3eOtwkG7SjArD+1Cgx4eHh4x3izdDZJrPNrfdM8u2mA4eHh4f0Sr12gDQb7IkU0lYCHh4f3dl6bQM++m/NuQhceHh7eMV5SjNi0wdrAk691czR4eHh4B3htA2yTiLdHkLe7Vh0/PDw8vPQz/wADY0EFWqnQFgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'さようなら！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/miku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

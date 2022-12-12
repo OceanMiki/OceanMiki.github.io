@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="http://oceanmiki.github.io/2020/02/02/Java%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%97%B6%E9%97%B4LocalDateTime/">
+    
+    
+    <title>Java语言之时间LocalDateTime | Ocean&#39;s Blog | 有朝一日刀在手，斩遍天下恩爱狗！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Java,时间,DateTimeFormatter">
+    <meta name="description" content="从 Java 8 开始，java.time包提供了新的日期和时间API，以及一套新的用于取代SimpleDateFormat的格式化类型DateTimeFormatter。和旧的API相比，新的对日期和时间进行运算更加方便。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java语言之时间LocalDateTime">
+<meta property="og:url" content="http://oceanmiki.github.io/2020/02/02/Java%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%97%B6%E9%97%B4LocalDateTime/index.html">
+<meta property="og:site_name" content="Ocean&#39;s Blog">
+<meta property="og:description" content="从 Java 8 开始，java.time包提供了新的日期和时间API，以及一套新的用于取代SimpleDateFormat的格式化类型DateTimeFormatter。和旧的API相比，新的对日期和时间进行运算更加方便。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-02T09:25:52.945Z">
+<meta property="article:modified_time" content="2020-02-02T12:38:03.238Z">
+<meta property="article:author" content="冷亚麻色的？">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="时间">
+<meta property="article:tag" content="DateTimeFormatter">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="Ocean&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">冷亚麻色的？</h5>
+          <a href="mailto:976626892@qq.com" title="976626892@qq.com" class="mail">976626892@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/OceanMiki" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/6572857199/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Java语言之时间LocalDateTime</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Java语言之时间LocalDateTime</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-02-02T09:25:52.945Z" itemprop="datePublished" class="page-time">
+  2020-02-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#最常用的LocalDateTime"><span class="post-toc-number">1.</span> <span class="post-toc-text">最常用的LocalDateTime</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#获取当前日期和时间"><span class="post-toc-number">1.0.0.1.</span> <span class="post-toc-text">获取当前日期和时间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#通过指定的日期和时间创建"><span class="post-toc-number">1.0.0.2.</span> <span class="post-toc-text">通过指定的日期和时间创建</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#DateTimeFormatter的使用"><span class="post-toc-number">2.</span> <span class="post-toc-text">DateTimeFormatter的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自定义格式时间和日期"><span class="post-toc-number">2.0.0.1.</span> <span class="post-toc-text">自定义格式时间和日期</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#格式化时间"><span class="post-toc-number">2.0.0.2.</span> <span class="post-toc-text">格式化时间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解析时间"><span class="post-toc-number">2.0.0.3.</span> <span class="post-toc-text">解析时间</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#对时间日期的加减运算"><span class="post-toc-number">3.</span> <span class="post-toc-text">对时间日期的加减运算</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#对时间日期的设置"><span class="post-toc-number">4.</span> <span class="post-toc-text">对时间日期的设置</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#其他"><span class="post-toc-number">5.</span> <span class="post-toc-text">其他</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java语言之时间LocalDateTime"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Java语言之时间LocalDateTime</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-02-02 17:25:52" datetime="2020-02-02T09:25:52.945Z"  itemprop="datePublished">2020-02-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>从 Java 8 开始，<code>java.time</code>包提供了新的日期和时间API，以及一套新的用于取代<code>SimpleDateFormat</code>的格式化类型<code>DateTimeFormatter</code>。和旧的API相比，新的对日期和时间进行运算更加方便。</p>
+<a id="more"></a>
+
+<h1 id="最常用的LocalDateTime"><a href="#最常用的LocalDateTime" class="headerlink" title="最常用的LocalDateTime"></a>最常用的LocalDateTime</h1><h4 id="获取当前日期和时间"><a href="#获取当前日期和时间" class="headerlink" title="获取当前日期和时间"></a>获取当前日期和时间</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LocalDateTime now = LocalDateTime.now();</span><br></pre></td></tr></table></figure>
+
+<h4 id="通过指定的日期和时间创建"><a href="#通过指定的日期和时间创建" class="headerlink" title="通过指定的日期和时间创建"></a>通过指定的日期和时间创建</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用of()方法</span></span><br><span class="line">LocalDateTime localDateTime = LocalDateTime.of(<span class="number">2019</span>, <span class="number">8</span>, <span class="number">27</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">00</span>);</span><br><span class="line"></span><br><span class="line">LocalDate d2 = LocalDate.of(<span class="number">2019</span>, <span class="number">11</span>, <span class="number">30</span>); <span class="comment">// 2019-11-30, 注意11=11月</span></span><br><span class="line">LocalTime t2 = LocalTime.of(<span class="number">15</span>, <span class="number">16</span>, <span class="number">17</span>); <span class="comment">// 15:16:17</span></span><br><span class="line">LocalDateTime dt2 = LocalDateTime.of(<span class="number">2019</span>, <span class="number">11</span>, <span class="number">30</span>, <span class="number">15</span>, <span class="number">16</span>, <span class="number">17</span>);</span><br><span class="line">LocalDateTime dt3 = LocalDateTime.of(d2, t2);</span><br></pre></td></tr></table></figure>
+
+<p>其中of（）方法是重载的，这里演示使用 <strong>年月日时分秒</strong> ，也可以选择不使用秒数等的方法。</p>
+<p>而且与Date不同，不需要考虑时间偏移的问题，月份一 一对应，星期也是1~7对对应星期一到星期日。</p>
+<h1 id="DateTimeFormatter的使用"><a href="#DateTimeFormatter的使用" class="headerlink" title="DateTimeFormatter的使用"></a>DateTimeFormatter的使用</h1><h4 id="自定义格式时间和日期"><a href="#自定义格式时间和日期" class="headerlink" title="自定义格式时间和日期"></a>自定义格式时间和日期</h4><p>一般来说：</p>
+<ul>
+<li>日期：yyyy-MM-dd</li>
+<li>时间：HH:mm:ss</li>
+</ul>
+<p>这里需要注意的是月份MM大写（为了和分钟区分），小时HH大写是为了使用24小时进制的时间。如果写成hh，当parse某个字符串中使用大于12的小时（13，14…）会抛异常。</p>
+<h4 id="格式化时间"><a href="#格式化时间" class="headerlink" title="格式化时间"></a>格式化时间</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">LocalDateTime now = LocalDateTime.now();</span><br><span class="line">DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">String str = dateTimeFormatter.format(now);</span><br><span class="line">System.out.println(now);</span><br><span class="line">System.out.println(str);</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出：</span></span><br><span class="line"> <span class="number">2020</span>-<span class="number">02</span>-<span class="number">02</span>T15:<span class="number">14</span>:<span class="number">34.092</span></span><br><span class="line"> <span class="number">2020</span>-<span class="number">02</span>-<span class="number">02</span> <span class="number">15</span>:<span class="number">14</span>:<span class="number">34</span></span><br></pre></td></tr></table></figure>
+
+<p>使用ofPattern()方法自定义格式。</p>
+<h4 id="解析时间"><a href="#解析时间" class="headerlink" title="解析时间"></a>解析时间</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="keyword">new</span> String(<span class="string">"2019-08-27 13:14:00"</span>);</span><br><span class="line">LocalDateTime localDateTime = LocalDateTime.parse(str,dateTimeFormatter);</span><br><span class="line">String format = dateTimeFormatter.format(localDateTime);</span><br><span class="line"></span><br><span class="line">System.out.println(format);<span class="comment">//用上面的格式化方法得到字符串，和原来的一样</span></span><br><span class="line">System.out.println(localDateTime);<span class="comment">//解析后的LocalDateTime</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//输出：</span></span><br><span class="line"><span class="number">2019</span>-<span class="number">08</span>-<span class="number">27</span> <span class="number">13</span>:<span class="number">14</span>:<span class="number">00</span></span><br><span class="line"><span class="number">2019</span>-<span class="number">08</span>-<span class="number">27</span>T13:<span class="number">14</span></span><br></pre></td></tr></table></figure>
+
+<p>这里严格按照ISO 8601的格式，注意ISO 8601规定的日期和时间分隔符是 <code>T</code> 。</p>
+<p>这里我发现一个细节，就是当解析的时间秒数为00的时候，解析后的LocalDateTime会自动省略秒数。</p>
+<h1 id="对时间日期的加减运算"><a href="#对时间日期的加减运算" class="headerlink" title="对时间日期的加减运算"></a>对时间日期的加减运算</h1><p>简单的：plus就是加，minus就是减，还可以链式操作哦。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        LocalDateTime dt = LocalDateTime.of(<span class="number">2019</span>, <span class="number">10</span>, <span class="number">26</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">59</span>);</span><br><span class="line">        System.out.println(dt);</span><br><span class="line">        <span class="comment">// 加5天减3小时:</span></span><br><span class="line">        LocalDateTime dt2 = dt.plusDays(<span class="number">5</span>).minusHours(<span class="number">3</span>);</span><br><span class="line">        System.out.println(dt2); <span class="comment">// 2019-10-31T17:30:59</span></span><br><span class="line">        <span class="comment">// 减1月:</span></span><br><span class="line">        LocalDateTime dt3 = dt2.minusMonths(<span class="number">1</span>);</span><br><span class="line">        System.out.println(dt3); <span class="comment">// 2019-09-30T17:30:59</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意到月份加减会自动调整日期，例如从<code>2019-10-31</code>减去1个月得到的结果是<code>2019-09-30</code>，因为9月没有31日。</p>
+<h1 id="对时间日期的设置"><a href="#对时间日期的设置" class="headerlink" title="对时间日期的设置"></a>对时间日期的设置</h1><p>你以为用set？no  no  no…</p>
+<p>对日期和时间进行调整则使用<code>withXxx()</code>方法，例如：<code>withHour(15)</code>会把<code>10:11:12</code>变为<code>15:11:12</code>：</p>
+<ul>
+<li>调整年：withYear()</li>
+<li>调整月：withMonth()</li>
+<li>调整日：withDayOfMonth()</li>
+<li>调整时：withHour()</li>
+<li>调整分：withMinute()</li>
+<li>调整秒：withSecond()</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        LocalDateTime dt = LocalDateTime.of(<span class="number">2019</span>, <span class="number">10</span>, <span class="number">26</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">59</span>);</span><br><span class="line">        System.out.println(dt);</span><br><span class="line">        <span class="comment">// 日期变为31日:</span></span><br><span class="line">        LocalDateTime dt2 = dt.withDayOfMonth(<span class="number">31</span>);</span><br><span class="line">        System.out.println(dt2); <span class="comment">// 2019-10-31T20:30:59</span></span><br><span class="line">        <span class="comment">// 月份变为9:</span></span><br><span class="line">        LocalDateTime dt3 = dt2.withMonth(<span class="number">9</span>);</span><br><span class="line">        System.out.println(dt3); <span class="comment">// 2019-09-30T20:30:59</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同样注意到调整月份时，会相应地调整日期，即把<code>2019-10-31</code>的月份调整为<code>9</code>时，日期也自动变为<code>30</code>。</p>
+<p>实际上，<code>LocalDateTime</code>还有一个通用的<code>with()</code>方法允许我们做更复杂的运算。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 本月第一天0:00时刻:</span></span><br><span class="line">        LocalDateTime firstDay = LocalDate.now().withDayOfMonth(<span class="number">1</span>).atStartOfDay();</span><br><span class="line">        <span class="comment">//或者</span></span><br><span class="line">        LocalDateTime firstDay = LocalDateTime.now().withDayOfMonth(<span class="number">1</span>).withHour(<span class="number">00</span>).withMinute(<span class="number">00</span>).withSecond(<span class="number">00</span>).withNano(<span class="number">000</span>);</span><br><span class="line">        System.out.println(firstDay);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 本月最后1天:</span></span><br><span class="line">        LocalDate lastDay = LocalDate.now().with(TemporalAdjusters.lastDayOfMonth());</span><br><span class="line">        System.out.println(lastDay);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 下月第1天:</span></span><br><span class="line">        LocalDate nextMonthFirstDay = LocalDate.now().with(TemporalAdjusters.firstDayOfNextMonth());</span><br><span class="line">        System.out.println(nextMonthFirstDay);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 本月第1个周一:</span></span><br><span class="line">        LocalDate firstWeekday = LocalDate.now().with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY));</span><br><span class="line">        System.out.println(firstWeekday);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//某个月的第一天</span></span><br><span class="line">        LocalDate localDate = LocalDate.parse(<span class="string">"2019-02-02"</span>,DateTimeFormatter.ofPattern(<span class="string">"yyyy-MM-dd"</span>));</span><br><span class="line">        LocalDate first = localDate.withDayOfMonth(<span class="number">1</span>);</span><br><span class="line">        System.out.println(first);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//某个月的最后一个星期四（11月的就是感恩节）</span></span><br><span class="line">        LocalDate localDate = LocalDate.parse(<span class="string">"2020-11-02"</span>,DateTimeFormatter.ofPattern(<span class="string">"yyyy-MM-dd"</span>));</span><br><span class="line">        LocalDate last = localDate.with(TemporalAdjusters.lastInMonth(DayOfWeek.THURSDAY));</span><br><span class="line">        System.out.println(last);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意用到TemporalAdjusters末尾的s，不然就没有后面的静态方法。如果获取到某个月的最后一天的值返回给的不是LocalDate而是LocalDateTime，时间是不会自动变成23：59：59的，需要的自己设定。某个月的第一天也是这样。</p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>Java 8引入了新的日期和时间API，它们是不变类，默认按ISO 8601标准格式化和解析；</p>
+<p>使用<code>LocalDateTime</code>可以非常方便地对日期和时间进行加减，或者调整日期和时间，它总是返回新对象；</p>
+<p>使用<code>isBefore()</code>和<code>isAfter()</code>可以判断日期和时间的先后；</p>
+<p>使用<code>Duration</code>和<code>Period</code>可以分别表示两个日期和时间的“区间间隔”。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-02-02T12:38:03.238Z" itemprop="dateUpdated">2020-02-02 20:38:03</time>
+</span><br>
+
+
+        
+        <a href="/2020/02/02/Java%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%97%B6%E9%97%B4LocalDateTime/" target="_blank" rel="external">http://oceanmiki.github.io/2020/02/02/Java%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%97%B6%E9%97%B4LocalDateTime/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://OceanMiki.github.io">
+            <img src="/img/avatar.jpg" alt="冷亚麻色的？">
+            冷亚麻色的？
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DateTimeFormatter/" rel="tag">DateTimeFormatter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%97%B6%E9%97%B4/" rel="tag">时间</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://oceanmiki.github.io/2020/02/02/Java%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%97%B6%E9%97%B4LocalDateTime/&title=《Java语言之时间LocalDateTime》 — Ocean's Blog&pic=http://OceanMiki.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://oceanmiki.github.io/2020/02/02/Java%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%97%B6%E9%97%B4LocalDateTime/&title=《Java语言之时间LocalDateTime》 — Ocean's Blog&source=从 Java 8 开始，java.time包提供了新的日期和时间API，以及一套新的用于取代SimpleDateFormat的格式化类型DateTimeF..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://oceanmiki.github.io/2020/02/02/Java%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%97%B6%E9%97%B4LocalDateTime/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java语言之时间LocalDateTime》 — Ocean's Blog&url=http://oceanmiki.github.io/2020/02/02/Java%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%97%B6%E9%97%B4LocalDateTime/&via=http://OceanMiki.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://oceanmiki.github.io/2020/02/02/Java%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%97%B6%E9%97%B4LocalDateTime/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/02/08/C++%E4%B9%8B%E6%8C%87%E9%92%88%E7%9A%84%E6%8C%87%E9%92%88/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">C++之指针的指针</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/01/27/Java%E8%AF%AD%E8%A8%80%E4%B9%8B%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Java语言之线程安全</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var id = location.pathname
+        if (location.pathname.length > 50) {
+          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
+        }
+        const gitalk = new Gitalk({
+          clientID: 'c52a2baefea4a51b005f',
+          clientSecret: 'e5040d78db75dd0dd2cce3dc7bc0fbfa67c2b9a4',
+          repo: 'OceanMiki.github.io',
+          owner: 'OceanMiki',
+          admin: ['OceanMiki'],
+          id: id,      // Ensure uniqueness and length less than 50
+          title: document.title.split('|')[0],
+          distractionFreeMode: false  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        点开了就扫一下！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/WeChat.jpg" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>冷亚麻色的？ &copy; 2020 - 2022</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://oceanmiki.github.io/2020/02/02/Java%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%97%B6%E9%97%B4LocalDateTime/&title=《Java语言之时间LocalDateTime》 — Ocean's Blog&pic=http://OceanMiki.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://oceanmiki.github.io/2020/02/02/Java%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%97%B6%E9%97%B4LocalDateTime/&title=《Java语言之时间LocalDateTime》 — Ocean's Blog&source=从 Java 8 开始，java.time包提供了新的日期和时间API，以及一套新的用于取代SimpleDateFormat的格式化类型DateTimeF..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://oceanmiki.github.io/2020/02/02/Java%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%97%B6%E9%97%B4LocalDateTime/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java语言之时间LocalDateTime》 — Ocean's Blog&url=http://oceanmiki.github.io/2020/02/02/Java%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%97%B6%E9%97%B4LocalDateTime/&via=http://OceanMiki.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://oceanmiki.github.io/2020/02/02/Java%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%97%B6%E9%97%B4LocalDateTime/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADK0lEQVR42u3a0Y7iMAwF0Pn/n559HQlRru2watLTJ4Qg9AQJY9/8/MTXb+t6996/z78+fn1Xvs7iCxsbG3sTdn7rr++qrpBvwetrrrcjvxNsbGzsU9nvfuF7t5XUjuuaklScpBC+fR4bGxsb+7JEJUXrmjovhNjY2NjYVVKOScrVZPCEjY2N/Ux2b8Q/v8W1n/WVWRo2Njb27dl5Knr/x1/Jt7GxsbFvzO4dwekN/Xsj/upYKlJgY2NjH8TuHdnpbcSkPchLV97AYGNjY5/EzkvI9YdNjuDkoe8kwMDGxsY+lZ0Hrnn5qTY2k9A3XxMbGxv7aeykLZmPgfLNzTclip+xsbGxD2L3xjeTRiUfDPWC3vLGYWNjY2/OrgYD1bg3L2+90f/1ah+maNjY2NhHsP//4Zvq0Ko6nKrGGNjY2Nj7svOgdFWr0Nu43kZ8aEKwsbGxj2Dnh2x6f/F7AUD1SFCvZcLGxsY+g53HsZPR/KrIYRIVYGNjY5/NztuS5LaS8jZpWqpfWznNxsbGxt6WnRShXubQGx4lVzVmxsbGxj6PPRkkVRuSnJe3JZOVsbGxsU9iJ9TqduS3NQkt8td8WAEbGxt7c3Zv9D85splHAquGVtjY2NhPYOfx6jw2qGLyFfKtxMbGxj6J3VsiX3qyZtIa5fHG6CAmNjY29o3ZvRhgbQA8OoIzCXqxsbGxD2L3BvfVElKNcnNMeR1sbGzsg9hrR/Brw+Bq01L+2rCxsbE3Z0c/8XEz8Fu8ql9DHiF/KG/Y2NjYB7Grt1sdJ+U31BtpVctq81vCxsbGvj07+a/eC3fzNatlctJZYGNjY5/Hzv/uV8PaZCSUj4fWjrqwsbGxT2VX/76vigGqwW21MheGStjY2NhbsecD/aQ49QLmahiQh83Y2NjYJ7HXjpl6LUpSnHrbkYcK2NjY2LuzVw10qgWsx64Gz818GxsbG3tDdu/4S358pzcG6kXFUZODjY2N/WB2PmbqRby9QVIh4sXGxsZ+PLsKyA/09DarWsawsbGxT2V/Y3AzOY7T+/TkMTY2NvZ57N6I5xtHavJxVdRsDAZS2NjY2Juw/wHY1iyHaO05hQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'さようなら！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/miku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

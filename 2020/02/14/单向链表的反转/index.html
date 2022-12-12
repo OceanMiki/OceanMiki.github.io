@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="http://oceanmiki.github.io/2020/02/14/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%8F%8D%E8%BD%AC/">
+    
+    
+    <title>单向链表的反转 | Ocean&#39;s Blog | 有朝一日刀在手，斩遍天下恩爱狗！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Java,单向链表">
+    <meta name="description" content="腾讯的一道面试题，将单向链表反转。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单向链表的反转">
+<meta property="og:url" content="http://oceanmiki.github.io/2020/02/14/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%8F%8D%E8%BD%AC/index.html">
+<meta property="og:site_name" content="Ocean&#39;s Blog">
+<meta property="og:description" content="腾讯的一道面试题，将单向链表反转。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-14T13:25:26.593Z">
+<meta property="article:modified_time" content="2020-02-16T13:57:11.811Z">
+<meta property="article:author" content="冷亚麻色的？">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="单向链表">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="Ocean&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">冷亚麻色的？</h5>
+          <a href="mailto:976626892@qq.com" title="976626892@qq.com" class="mail">976626892@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/OceanMiki" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/6572857199/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">单向链表的反转</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">单向链表的反转</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-02-14T13:25:26.593Z" itemprop="datePublished" class="page-time">
+  2020-02-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#声明"><span class="post-toc-number">1.</span> <span class="post-toc-text">声明</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#节点"><span class="post-toc-number">1.0.0.1.</span> <span class="post-toc-text">节点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#链表"><span class="post-toc-number">1.0.0.2.</span> <span class="post-toc-text">链表</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#方式一"><span class="post-toc-number">2.</span> <span class="post-toc-text">方式一</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#思路"><span class="post-toc-number">2.0.0.1.</span> <span class="post-toc-text">思路</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码实现"><span class="post-toc-number">2.0.0.2.</span> <span class="post-toc-text">代码实现</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#方式二"><span class="post-toc-number">3.</span> <span class="post-toc-text">方式二</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#思路-1"><span class="post-toc-number">3.0.0.1.</span> <span class="post-toc-text">思路</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码实现-1"><span class="post-toc-number">3.0.0.2.</span> <span class="post-toc-text">代码实现</span></a></li></ol></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-单向链表的反转"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">单向链表的反转</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-02-14 21:25:26" datetime="2020-02-14T13:25:26.593Z"  itemprop="datePublished">2020-02-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>腾讯的一道面试题，将单向链表反转。</p>
+<a id="more"></a>
+
+<h1 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h1><h4 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">heroNode</span></span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="keyword">int</span> no;</span><br><span class="line">    heroNode next;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">heroNode</span><span class="params">(String name, <span class="keyword">int</span> no)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.no = no;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"heroNode&#123;"</span> +</span><br><span class="line">                <span class="string">"name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", no="</span> + no +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">singleList</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> heroNode head = <span class="keyword">new</span> heroNode(<span class="string">""</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">public</span> heroNode tail = head;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> heroNode <span class="title">getHead</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(heroNode newhero)</span></span>&#123;</span><br><span class="line">        tail.next = newhero;</span><br><span class="line">        tail = newhero;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">length</span><span class="params">()</span></span>&#123;</span><br><span class="line">        heroNode temp = head.next;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (temp.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            cnt++;</span><br><span class="line">            temp = temp.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">        heroNode temp = head;</span><br><span class="line">        <span class="keyword">while</span> (temp.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            temp = temp.next;</span><br><span class="line">            System.out.println(temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>除了头节点，我还定义了个尾节点，这样添加节点的时候就不用反复遍历链表来找到尾节点。另外，以后对双向链表的操作也更加方便（像什么逆序输出之类的）。</p>
+<h1 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h1><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>首先，new一个新的头节点。</p>
+<p>然后，将原来的链表每个节点按顺序取出，每取出一个节点就将它的next接上新的头节点的next（如果是第一个节点，接上的就是null）。</p>
+<p>最后，将新的头节点的next接上取出的节点。</p>
+<p><strong>但是</strong>，上面的方法是有问题的。</p>
+<p>发现了没有？</p>
+<p>取出的节点的next接上新的头节点的next之后，原来链表在取出的节点之后的所有节点都找不到了（next都变了）。</p>
+<p>所以需要一个额外的节点，用来保存取出的节点的下一个节点。</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverse1</span><span class="params">(singleList original)</span></span>&#123;</span><br><span class="line">        singleList reverseList = <span class="keyword">new</span> singleList();</span><br><span class="line">        heroNode originHead = original.getHead();</span><br><span class="line">        heroNode cur = original.getHead().next;</span><br><span class="line">        <span class="keyword">if</span>(cur == <span class="keyword">null</span> || cur.next == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        heroNode next = <span class="keyword">null</span>;</span><br><span class="line">        heroNode reverseHead = reverseList.getHead();<span class="comment">//新的头节点</span></span><br><span class="line">        <span class="keyword">while</span> (cur != <span class="keyword">null</span>)&#123;</span><br><span class="line">            next = cur.next;<span class="comment">//保存当前节点的下一个节点，避免丢失</span></span><br><span class="line">            cur.next = reverseHead.next;</span><br><span class="line">            reverseHead.next = cur;</span><br><span class="line">            cur = next;</span><br><span class="line">        &#125;</span><br><span class="line">        original.getHead().next = reverseHead.next;<span class="comment">//原来的头接上反转之后的链表</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>原来这个函数我想不改变原来的链表，通过函数返回反转的链表，但就不是这么一个思路了，而且写出来也不好看。</p>
+<p>为使代码更高效，如果链表为空，或者只有一个节点，就直接返回。</p>
+<h1 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h1><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>利用栈的先进后出。</p>
+<p>首先，将原链表的节点按顺序取出，每取出一个就将它压进栈中。</p>
+<p>然后，定义一个新的链表。将栈中的节点一个个弹出，每弹出一个就接在新的链表后面。</p>
+<p><strong>但是</strong>，记得把弹出的节点的next置空，否则会死循环。</p>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverse2</span><span class="params">(singleList oringin)</span></span>&#123;</span><br><span class="line">        singleList reverseList = <span class="keyword">new</span> singleList();</span><br><span class="line">        heroNode temp = oringin.getHead().next;</span><br><span class="line">        <span class="keyword">if</span>(temp == <span class="keyword">null</span> || temp.next == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Stack&lt;heroNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        heroNode cur = reverseList.getHead();</span><br><span class="line">        <span class="keyword">while</span> (temp != <span class="keyword">null</span>)&#123;</span><br><span class="line">            stack.push(temp);</span><br><span class="line">            temp = temp.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (stack.size() &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            heroNode last = stack.pop();</span><br><span class="line">            last.next = <span class="keyword">null</span>;<span class="comment">//取出节点后将next域置空</span></span><br><span class="line">            cur.next = last;</span><br><span class="line">            cur = cur.next;</span><br><span class="line">        &#125;</span><br><span class="line">        oringin.getHead().next = reverseList.getHead().next;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个方法对原来链表破坏更加明显。</p>
+<p>在取出节点的同时就将它的next置空，多亏了Java的垃圾回收机制，置空就置空了，不用我们自己手动的free掉。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-02-16T13:57:11.811Z" itemprop="dateUpdated">2020-02-16 21:57:11</time>
+</span><br>
+
+
+        
+        <a href="/2020/02/14/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%8F%8D%E8%BD%AC/" target="_blank" rel="external">http://oceanmiki.github.io/2020/02/14/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%8F%8D%E8%BD%AC/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://OceanMiki.github.io">
+            <img src="/img/avatar.jpg" alt="冷亚麻色的？">
+            冷亚麻色的？
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8/" rel="tag">单向链表</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://oceanmiki.github.io/2020/02/14/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%8F%8D%E8%BD%AC/&title=《单向链表的反转》 — Ocean's Blog&pic=http://OceanMiki.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://oceanmiki.github.io/2020/02/14/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%8F%8D%E8%BD%AC/&title=《单向链表的反转》 — Ocean's Blog&source=腾讯的一道面试题，将单向链表反转。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://oceanmiki.github.io/2020/02/14/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%8F%8D%E8%BD%AC/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《单向链表的反转》 — Ocean's Blog&url=http://oceanmiki.github.io/2020/02/14/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%8F%8D%E8%BD%AC/&via=http://OceanMiki.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://oceanmiki.github.io/2020/02/14/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%8F%8D%E8%BD%AC/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/02/15/%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">约瑟夫问题</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/02/13/%E6%95%B0%E7%BB%84%E5%AE%9E%E7%8E%B0%E7%8E%AF%E5%BD%A2%E9%98%9F%E5%88%97/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">数组实现环形队列</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var id = location.pathname
+        if (location.pathname.length > 50) {
+          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
+        }
+        const gitalk = new Gitalk({
+          clientID: 'c52a2baefea4a51b005f',
+          clientSecret: 'e5040d78db75dd0dd2cce3dc7bc0fbfa67c2b9a4',
+          repo: 'OceanMiki.github.io',
+          owner: 'OceanMiki',
+          admin: ['OceanMiki'],
+          id: id,      // Ensure uniqueness and length less than 50
+          title: document.title.split('|')[0],
+          distractionFreeMode: false  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        点开了就扫一下！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/WeChat.jpg" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>冷亚麻色的？ &copy; 2020 - 2022</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://oceanmiki.github.io/2020/02/14/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%8F%8D%E8%BD%AC/&title=《单向链表的反转》 — Ocean's Blog&pic=http://OceanMiki.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://oceanmiki.github.io/2020/02/14/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%8F%8D%E8%BD%AC/&title=《单向链表的反转》 — Ocean's Blog&source=腾讯的一道面试题，将单向链表反转。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://oceanmiki.github.io/2020/02/14/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%8F%8D%E8%BD%AC/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《单向链表的反转》 — Ocean's Blog&url=http://oceanmiki.github.io/2020/02/14/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%8F%8D%E8%BD%AC/&via=http://OceanMiki.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://oceanmiki.github.io/2020/02/14/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%8F%8D%E8%BD%AC/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADKklEQVR42u3aS47bQAwFwLn/pR0guyBR+5EUApsqrQyN3OrqWdD8/PzE1+v39ffnqzvVJ6/ekqx8XnN0YWNjY38J+3W8zptInj8/k39O2Ml7sbGxsbey50HrfOde/OSYsLGxsZ/MPqcH5y3mwSwPmdjY2NjYE3Y1/aiGrl5RCRsbG/vJ7OoWJ0WoakGqGsBurqVhY2Njfzx70uj9tM//qb+NjY2N/THs1+CqDuLMGwPnNKOwc2xsbOxF7GpBZ9IwmDQA8tQlSVewsbGxN7HzQnze3K2WgebHlBxN+SFsbGzsL2cX2qXxtpLSzyQJKRSYsLGxsRex89GZaiCZrNBrA5TLUtjY2NhL2fmdPIRUQ9q8uVuYVMLGxsZex86PYDJwmbwrbwyXwdjY2NiPYVcDTBLYevOhk4IXNjY29m52Uk6qNnrnx5cPa54P93IFbGxs7Mew89BSTSEmLeFkPPTNvw0bGxt7KXsSiqpt4OqYfu9OlHthY2Njfzk7edldTda7CkM5EhsbG/sJ7GQscpJUVFfOD6uaimBjY2PvZveGb/LXTwZ37kqK/tgPNjY29jp2r0hUHcGZtHJ7B3T5XWxsbOx17OpQTrWpcO9qOfVyTWxsbOx17F7BKP/rfMiyehyjSSVsbGzsr2XPK+eFF7eSnF7yg42Njf0EdhIkesEsX3l+vzCEhI2Njf0Ydh4qqt/Ni0R5m6GwZ2xsbOx17PMS1aGcSZHorgbAm8/Y2NjY69i9n/i9cn9zo0mCERezsLGxsbeyz1/LX1AtP00KW839Y2NjYy9i57WX+SBOkmz0wmeztISNjY29gp0HgMJATLF4lAez3q7+8S1sbGzsRexqUJlExTzl6DUPqu0EbGxs7B3sV/GalPh7JaHkOJL1L2tp2NjY2F/O7hWY8sBTHb6pUntvx8bGxt7HToLWpNg0D3K9QPUmdGFjY2OvYydBKwkk+U//8zPzolKUh2FjY2M/nj3f9ORAe+Oe2NjY2E9m99KSeZWrOogZ/RuwsbGx17HzolL1R3+1UFVNQprtamxsbOxF7F6jNwlvSbDptRCqoe62kR1sbGzsz2L/AlW8Gv7D/Ty7AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'さようなら！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/miku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

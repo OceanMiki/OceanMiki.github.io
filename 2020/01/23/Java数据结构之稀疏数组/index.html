@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="http://oceanmiki.github.io/2020/01/23/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/">
+    
+    
+    <title>Java数据结构之稀疏数组 | Ocean&#39;s Blog | 有朝一日刀在手，斩遍天下恩爱狗！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Java,数据结构,稀疏数组">
+    <meta name="description" content="稀疏数组可以看做是普通数组的压缩，但是这里说的普通数组是值无效数据量远大于有效数据量的数组。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java数据结构之稀疏数组">
+<meta property="og:url" content="http://oceanmiki.github.io/2020/01/23/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:site_name" content="Ocean&#39;s Blog">
+<meta property="og:description" content="稀疏数组可以看做是普通数组的压缩，但是这里说的普通数组是值无效数据量远大于有效数据量的数组。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-01-23T04:47:05.000Z">
+<meta property="article:modified_time" content="2020-01-27T12:16:31.079Z">
+<meta property="article:author" content="冷亚麻色的？">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="稀疏数组">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="Ocean&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">冷亚麻色的？</h5>
+          <a href="mailto:976626892@qq.com" title="976626892@qq.com" class="mail">976626892@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/OceanMiki" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/6572857199/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Java数据结构之稀疏数组</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Java数据结构之稀疏数组</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-01-23T04:47:05.000Z" itemprop="datePublished" class="page-time">
+  2020-01-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#稀疏数组的应用"><span class="post-toc-number">1.</span> <span class="post-toc-text">稀疏数组的应用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#稀疏数组与二维数组互相转化"><span class="post-toc-number">2.</span> <span class="post-toc-text">稀疏数组与二维数组互相转化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#二维数组转稀疏数组"><span class="post-toc-number">2.0.0.1.</span> <span class="post-toc-text">二维数组转稀疏数组</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#稀疏数组转二维数组"><span class="post-toc-number">2.0.0.2.</span> <span class="post-toc-text">稀疏数组转二维数组</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#代码实现"><span class="post-toc-number">3.</span> <span class="post-toc-text">代码实现</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java数据结构之稀疏数组"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Java数据结构之稀疏数组</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-01-23 12:47:05" datetime="2020-01-23T04:47:05.000Z"  itemprop="datePublished">2020-01-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>稀疏数组可以看做是普通数组的压缩，但是这里说的普通数组是值无效数据量远大于有效数据量的数组。</p>
+<a id="more"></a>
+
+<h1 id="稀疏数组的应用"><a href="#稀疏数组的应用" class="headerlink" title="稀疏数组的应用"></a>稀疏数组的应用</h1><p>编写一个五子棋程序的存档和读档：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td>黑</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>白</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>如图一个 11 x 11 的棋盘只下了两步棋子，如果用一个 11 x 11 的二维数组保存。</p>
+<p>黑子的位置（【1,2】）存为1，白子的位置（【2，3】）存为2的话，耗费了大量的空间存空白位置。</p>
+<p>为了节省空间，可以运用稀疏数组a[3] [3]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>row</th>
+<th>col</th>
+<th>val</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>11</td>
+<td>11</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+</tr>
+</tbody></table>
+<p>上面变成 3 x 3 的一个稀疏数组：第一行 a [0] ，存储棋盘共有 11 行，11 列，除空白位置（val = 0）外，有效值有两个。其余行（a [1] 和 a[2] ）记录每个有效位置的坐标与对应值。</p>
+<h1 id="稀疏数组与二维数组互相转化"><a href="#稀疏数组与二维数组互相转化" class="headerlink" title="稀疏数组与二维数组互相转化"></a>稀疏数组与二维数组互相转化</h1><h4 id="二维数组转稀疏数组"><a href="#二维数组转稀疏数组" class="headerlink" title="二维数组转稀疏数组"></a>二维数组转稀疏数组</h4><ol>
+<li>遍历原始二维数组，得到有效数据总数 sum ；</li>
+<li>创建稀疏数组 sparseArr int [sum + 1] [3] ;</li>
+<li>遍历原始二维数组，记录有效数据坐标.</li>
+</ol>
+<h4 id="稀疏数组转二维数组"><a href="#稀疏数组转二维数组" class="headerlink" title="稀疏数组转二维数组"></a>稀疏数组转二维数组</h4><ol>
+<li>读取稀疏数组第一行，创建二维数组；</li>
+<li>读取余下的数据记录，将对应坐标的值赋给二维数组.</li>
+</ol>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> 稀疏数组SparseArray;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SparseArr</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 创建一个 11*11 二维数组</span></span><br><span class="line">		<span class="keyword">int</span> chessArr[][] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">11</span>][<span class="number">11</span>];</span><br><span class="line">		chessArr[<span class="number">1</span>][<span class="number">2</span>] = <span class="number">1</span>;</span><br><span class="line">		chessArr[<span class="number">2</span>][<span class="number">3</span>] = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 输出棋盘</span></span><br><span class="line">		System.out.println(<span class="string">"原始二维数组："</span>);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> row[] : chessArr) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> data : row) &#123;</span><br><span class="line">				System.out.print(data);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 得到有效数据总数</span></span><br><span class="line">		<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; chessArr.length; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; chessArr.length; j++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (chessArr[i][j] != <span class="number">0</span>)</span><br><span class="line">					sum++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 创建对应稀疏数组</span></span><br><span class="line">		<span class="keyword">int</span> sparseArr[][] = <span class="keyword">new</span> <span class="keyword">int</span>[sum + <span class="number">1</span>][<span class="number">3</span>];</span><br><span class="line">		sparseArr[<span class="number">0</span>][<span class="number">0</span>] = chessArr.length;</span><br><span class="line">		sparseArr[<span class="number">0</span>][<span class="number">1</span>] = chessArr.length;</span><br><span class="line">		sparseArr[<span class="number">0</span>][<span class="number">2</span>] = sum;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 给稀疏数组赋值</span></span><br><span class="line">		<span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; chessArr.length; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; chessArr.length; j++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (chessArr[i][j] != <span class="number">0</span>) &#123;</span><br><span class="line">					count++;</span><br><span class="line">					sparseArr[count][<span class="number">0</span>] = i;</span><br><span class="line">					sparseArr[count][<span class="number">1</span>] = j;</span><br><span class="line">					sparseArr[count][<span class="number">2</span>] = chessArr[i][j];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 输出稀疏数组的样式</span></span><br><span class="line">		System.out.println();</span><br><span class="line">		System.out.println(<span class="string">"得到的稀疏数组如下："</span>);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sparseArr.length; i++) &#123;</span><br><span class="line">			System.out.printf(<span class="string">"%d\t%d\t%d\t\n"</span>, sparseArr[i][<span class="number">0</span>], sparseArr[i][<span class="number">1</span>], sparseArr[i][<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println();</span><br><span class="line"></span><br><span class="line">		<span class="comment">//稀疏数组转化二维数组</span></span><br><span class="line">		<span class="keyword">int</span> chessArr2[][] = <span class="keyword">new</span> <span class="keyword">int</span> [sparseArr[<span class="number">0</span>][<span class="number">0</span>]][sparseArr[<span class="number">0</span>][<span class="number">1</span>]];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; sparseArr.length; i++) &#123;</span><br><span class="line">			chessArr2[sparseArr[i][<span class="number">0</span>]][sparseArr[i][<span class="number">1</span>]] = sparseArr[i][<span class="number">2</span>];</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//恢复后的二维数组</span></span><br><span class="line">		System.out.println(<span class="string">"恢复后的二维数组:"</span>);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> row[] : chessArr2) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> data : row)&#123;</span><br><span class="line">				System.out.print(data);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-01-27T12:16:31.079Z" itemprop="dateUpdated">2020-01-27 20:16:31</time>
+</span><br>
+
+
+        
+        <a href="/2020/01/23/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/" target="_blank" rel="external">http://oceanmiki.github.io/2020/01/23/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://OceanMiki.github.io">
+            <img src="/img/avatar.jpg" alt="冷亚麻色的？">
+            冷亚麻色的？
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/" rel="tag">稀疏数组</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://oceanmiki.github.io/2020/01/23/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/&title=《Java数据结构之稀疏数组》 — Ocean's Blog&pic=http://OceanMiki.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://oceanmiki.github.io/2020/01/23/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/&title=《Java数据结构之稀疏数组》 — Ocean's Blog&source=稀疏数组可以看做是普通数组的压缩，但是这里说的普通数组是值无效数据量远大于有效数据量的数组。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://oceanmiki.github.io/2020/01/23/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java数据结构之稀疏数组》 — Ocean's Blog&url=http://oceanmiki.github.io/2020/01/23/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/&via=http://OceanMiki.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://oceanmiki.github.io/2020/01/23/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/01/23/%E7%BB%8F%E5%85%B8%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">经典算法之快速排序</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/01/21/%E7%88%B1%E6%83%85%E5%85%AC%E5%AF%935%E4%B9%8B%E5%BC%A0%E4%BC%9F%E6%8B%94%E5%88%80%E5%90%A7%EF%BC%81/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">爱情公寓5之张伟拔刀吧！</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var id = location.pathname
+        if (location.pathname.length > 50) {
+          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
+        }
+        const gitalk = new Gitalk({
+          clientID: 'c52a2baefea4a51b005f',
+          clientSecret: 'e5040d78db75dd0dd2cce3dc7bc0fbfa67c2b9a4',
+          repo: 'OceanMiki.github.io',
+          owner: 'OceanMiki',
+          admin: ['OceanMiki'],
+          id: id,      // Ensure uniqueness and length less than 50
+          title: document.title.split('|')[0],
+          distractionFreeMode: false  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        点开了就扫一下！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/WeChat.jpg" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>冷亚麻色的？ &copy; 2020 - 2022</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://oceanmiki.github.io/2020/01/23/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/&title=《Java数据结构之稀疏数组》 — Ocean's Blog&pic=http://OceanMiki.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://oceanmiki.github.io/2020/01/23/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/&title=《Java数据结构之稀疏数组》 — Ocean's Blog&source=稀疏数组可以看做是普通数组的压缩，但是这里说的普通数组是值无效数据量远大于有效数据量的数组。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://oceanmiki.github.io/2020/01/23/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java数据结构之稀疏数组》 — Ocean's Blog&url=http://oceanmiki.github.io/2020/01/23/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/&via=http://OceanMiki.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://oceanmiki.github.io/2020/01/23/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASYAAAEmCAAAAADqr2IGAAAEmklEQVR42u3aS27bQBAFQN//0snWQCLqvW460DDFlWBI5EzRQH+mv77i69e36/tfks9//vbPO7/6/vUdXj33+umvVnLDhQkTJkyYPpIpWVay4etFXG8yp8/XnKywuA8mTJgwYTqcKbndLFYmy0oC+XWCck3Q7gsTJkyYMGHKw3YehvPUYV9aY8KECRMmTMkm27ZpXqAm38833DZ8MWHChAnT85jy2+Xt19lfNqlD3sz9wV44JkyYMGH6MKY8MD/v880XJkyYMGH6MKZf5dUG0SRdSNq1+eBOO5oT7RoTJkyYMB3LlAfIfNQmP2i8t8mbH6m2+8WECRMmTOcybUZz2uCdBPL9nWftZkyYMGHC9FSmtkBtG6Z5ME7u0x46tsXwm5VgwoQJE6bDmdryMgnGCVabLrSUt7WbMWHChAnTgUx5c3aGOCtrk6K3fdbsQBQTJkyYMJ3OlIfGn9hqu/k2sch/Ff1zYMKECROmA5lmhWI++JL3SPeHlEk7OAn/f1khJkyYMGE6linf3ubQcTbQMxv9KQZx4uEeTJgwYcL0DKZihCUuNfOn5I3mPKW4d1WYMGHChOkZTHmAn43szD7PSt9ZWhAlBJgwYcKE6SimfCin/VVbys6Gh9pW7zChwYQJEyZMxzLNGq93HVLmR4ntaM7snpgwYcKE6XlMd920bb/mITkJ8Ekpvtk7JkyYMGE6nSkJvflx4G2957K4bROOYu+YMGHChOlApnahbZG8aqQGqcCsVK6TA0yYMGHCdCxTssm8yZskBPeG7bwYvmEEFhMmTJgwHci0D6izpu3ssHPWos0L+3qyCRMmTJgwHcI0I2hHZ/Kw3TIlL3KVAGHChAkTpmOZ8uRgVkz+dOM1f82z5jUmTJgwYTqd6XrRbeN1Q1n0pMtSPB/xeWmCCRMmTJiOZcqbnm3pm7eA9/dP7pn8K7x5GZgwYcKE6VimPdC+yXv925ayLX2LdWLChAkTpgOZkgcky9q0bvMydV+uDweMMGHChAnTgUyzxc3asrNSs20Nt+lFtF9MmDBhwvQ4plnIbw8429cwq+n3iQsmTJgwYTqdaXbgty9NZ+XxjDI5an35REyYMGHCdCxTO2rTFsZJMG63N0sIkmTlzfcxYcKECdOxTHmAb0d8rjf5FVyzlGXf8MWECRMmTM9gysNkcsS4OeBMPueHr3Ub9/q3mDBhwoTpQUybUNoO4uTLbVc129FtvXBMmDBhwvSRTFF9XAbXfJPtAWob7POX9CYhwIQJEyZMxzJtWqKz4rnuQ4/K8rylG533YsKECROmo5jaBm7bkG3D8Ca0J4eat12YMGHChOkQprrdWR4KboL05oAzf+VRaoIJEyZMmI5lmsXEWfTcDNDMEpH9eNAqdcCECRMmTB/DlAfX9sH7kntTmSZFclE8Y8KECROmw5lmBe2sCdu2d/PDy00q8+b7mDBhwoTpP2P6l2VzciCaMw2/iQkTJkyY/hum/Giz3Uwef9sD1Pw1vNwdJkyYMGE6nKltlc5aqLPwn4/XJK+wHQDChAkTJkynM+Xla5I05MSbF7AvtmfQmDBhwoTpKKbfBFw5und1Nx4AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'さようなら！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/miku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
