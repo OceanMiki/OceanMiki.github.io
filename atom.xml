@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://oceanmiki.github.io/"/>
-  <updated>2022-06-23T08:01:16.851Z</updated>
+  <updated>2022-12-12T03:32:57.677Z</updated>
   <id>http://oceanmiki.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac升级12.6版本后给手机开热点</title>
+    <link href="http://oceanmiki.github.io/2022/12/12/Mac%E5%8D%87%E7%BA%A712.6%E7%89%88%E6%9C%AC%E5%90%8E%E7%BB%99%E6%89%8B%E6%9C%BA%E5%BC%80%E7%83%AD%E7%82%B9/"/>
+    <id>http://oceanmiki.github.io/2022/12/12/Mac%E5%8D%87%E7%BA%A712.6%E7%89%88%E6%9C%AC%E5%90%8E%E7%BB%99%E6%89%8B%E6%9C%BA%E5%BC%80%E7%83%AD%E7%82%B9/</id>
+    <published>2022-12-12T03:29:55.956Z</published>
+    <updated>2022-12-12T03:32:57.677Z</updated>
+    
+    <content type="html"><![CDATA[<p>升级系统后WiFi热点搜不到了</p><a id="more"></a><h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;升级系统后WiFi热点搜不到了&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="工具使用" scheme="http://OceanMiki.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="Mac" scheme="http://OceanMiki.github.io/tags/Mac/"/>
+    
+  </entry>
   
   <entry>
     <title>百度实习总结</title>
