@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://oceanmiki.github.io/"/>
-  <updated>2022-12-12T03:32:57.677Z</updated>
+  <updated>2023-12-07T02:41:26.029Z</updated>
   <id>http://oceanmiki.github.io/</id>
   
   <author>
@@ -17,13 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>iTerm2终端配置</title>
+    <link href="http://oceanmiki.github.io/2023/12/07/iTerm2%E7%BB%88%E7%AB%AF%E9%85%8D%E7%BD%AE/"/>
+    <id>http://oceanmiki.github.io/2023/12/07/iTerm2%E7%BB%88%E7%AB%AF%E9%85%8D%E7%BD%AE/</id>
+    <published>2023-12-07T01:31:08.434Z</published>
+    <updated>2023-12-07T02:41:26.029Z</updated>
+    
+    <content type="html"><![CDATA[<p>美化终端，简化操作</p><a id="more"></a><h1 id="右键打开iTerm出现两个窗口解决方案"><a href="#右键打开iTerm出现两个窗口解决方案" class="headerlink" title="右键打开iTerm出现两个窗口解决方案"></a>右键打开iTerm出现两个窗口解决方案</h1><p>通过设置iTerm的偏好设置即可解决此问题</p><ol><li><p>打开iTerm，点击 Preference</p><img src="/images/iTerm2终端配置/Snipaste_2023-12-07_10-09-55.png" alt="Snipaste_2023-12-07_10-09-55" style="zoom: 33%;"></li><li><p>在General &gt; Startup 中将 Window restoration policy 修改为【Only Restore Hotkey Window】</p></li></ol><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/iTerm2终端配置/image-20231207103633065.png" alt="image-20231207103633065" title>                </div>                <div class="image-caption">image-20231207103633065</div>            </figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;美化终端，简化操作&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="工具使用" scheme="http://OceanMiki.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="Mac" scheme="http://OceanMiki.github.io/tags/Mac/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Mac升级12.6版本后给手机开热点</title>
     <link href="http://oceanmiki.github.io/2022/12/12/Mac%E5%8D%87%E7%BA%A712.6%E7%89%88%E6%9C%AC%E5%90%8E%E7%BB%99%E6%89%8B%E6%9C%BA%E5%BC%80%E7%83%AD%E7%82%B9/"/>
     <id>http://oceanmiki.github.io/2022/12/12/Mac%E5%8D%87%E7%BA%A712.6%E7%89%88%E6%9C%AC%E5%90%8E%E7%BB%99%E6%89%8B%E6%9C%BA%E5%BC%80%E7%83%AD%E7%82%B9/</id>
     <published>2022-12-12T03:29:55.956Z</published>
-    <updated>2022-12-12T03:32:57.677Z</updated>
+    <updated>2023-12-07T02:49:04.359Z</updated>
     
-    <content type="html"><![CDATA[<p>升级系统后WiFi热点搜不到了</p><a id="more"></a><h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1>]]></content>
+    <content type="html"><![CDATA[<p>升级系统后WiFi热点搜不到了</p><a id="more"></a><h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>Macbook12.6版本无法给手机开热点解决方案</p><p>我是电脑网线连接的网线，然后通过共享给手机开的热点，但自从升级了mac系统就用不了了 </p><ol><li><p>打开电脑设置，点击“共享” </p></li><li><p>共享中点击互联网共享设置成下图</p><img src="/images/Mac升级12.6版本后给手机开热点/image-20231207104849417.png" alt="image-20231207104849417" style="zoom:50%;"></li><li><p>点开“网络”，在上方“位置”处点击“自动”编辑位置 </p></li><li><p>点击加号，随便取一个名字，点击完成</p><img src="/images/Mac升级12.6版本后给手机开热点/image-20231207104751220.png" alt="image-20231207104751220" style="zoom:50%;"></li><li><p>退出设置，在手机上搜索电脑的热点名称，就可以连接啦</p></li></ol><p>电脑热点的名称在“互联网共享”的“wi-fi选项”中</p>]]></content>
     
     <summary type="html">
     
