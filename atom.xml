@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://oceanmiki.github.io/"/>
-  <updated>2023-12-07T03:16:41.498Z</updated>
+  <updated>2023-12-07T02:41:26.029Z</updated>
   <id>http://oceanmiki.github.io/</id>
   
   <author>
@@ -15,32 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>ceshi</title>
-    <link href="http://oceanmiki.github.io/2023/12/07/ceshi/"/>
-    <id>http://oceanmiki.github.io/2023/12/07/ceshi/</id>
-    <published>2023-12-07T03:16:41.000Z</published>
-    <updated>2023-12-07T03:16:41.498Z</updated>
-    
-    <content type="html"><![CDATA[<a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-      
-    
-    </summary>
-    
-    
-    
-      <category term="tag1" scheme="http://OceanMiki.github.io/tags/tag1/"/>
-    
-      <category term="tag2" scheme="http://OceanMiki.github.io/tags/tag2/"/>
-    
-  </entry>
   
   <entry>
     <title>iTerm2终端配置</title>
